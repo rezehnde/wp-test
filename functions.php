@@ -4,6 +4,26 @@ $timber = new Timber\Timber();
 
 add_theme_support( 'post-thumbnails' ); 
 
+include 'settings.php';
+include 'custom-widgets.php';
+
+function wptest_widgets_init() {
+	for ($i=1; $i <= 4; $i++) { 
+		register_sidebar(
+			array(
+				'name' 			=> 'Footer Column '.$i,
+				'id' 			=> 'footer_'.$i,
+				'description' 	=> 'Widgets in this area will be shown on all posts and pages.',
+				'before_widget' => '',
+				'after_widget'  => '',
+				'before_title'  => "<h2 class='footer-heading mb-4'>",
+				'after_title'   => "</h2>\n",
+			)
+		);	
+	}
+}
+add_action( 'widgets_init', 'wptest_widgets_init' );
+
 /*
  * Retrieve an array response from the HTTP request using the GET method.
  *
