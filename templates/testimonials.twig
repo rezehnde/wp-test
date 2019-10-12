@@ -1,0 +1,25 @@
+<div class="site-section border-bottom">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center border-primary">
+                <h2 class="font-weight-light text-primary">Testimonials</h2>
+            </div>
+        </div>
+
+        <div class="slide-one-item home-slider owl-carousel">
+            {% for testimonial in testimonials %}
+            <div>
+                <div class="testimonial">
+                <figure class="mb-4">
+                    <img src="{{ testimonial.thumbnail.src }}" alt="{{ testimonial.title }}" class="img-fluid mb-3">
+                </figure>
+                <blockquote>
+                    <p>&ldquo;{{ testimonial.meta('testimonial') }}&rdquo;</p>
+                    <p class="author"> &mdash; {{ testimonial.title }}</p>
+                </blockquote>
+                </div>                
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

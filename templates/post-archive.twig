@@ -1,0 +1,8 @@
+<div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up">
+    <div class="h-entry">
+        <img src="{{ post.thumbnail.src }}" alt="{{ post.title }}" class="img-fluid">
+        <h2 class="font-size-regular"><a href="{{ post.link }}">{{ post.title }}</a></h2>
+        <div class="meta mb-4">by {{ post.author.name }} <span class="mx-2">&bullet;</span> {{ post.date('F d, Y') }} <span class="mx-2">&bullet;</span> {{ post.terms('category')|join(', ') }}</div>
+        <p>{{ post.post_content|excerpt(20) }}</p>
+    </div> 
+</div>
