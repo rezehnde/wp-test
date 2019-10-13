@@ -24,24 +24,17 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700"> 
     <link rel="stylesheet" href="{{theme.link}}/assets/fonts/icomoon/style.css">
-
     <link rel="stylesheet" href="{{theme.link}}/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{theme.link}}/assets/css/magnific-popup.css">
     <link rel="stylesheet" href="{{theme.link}}/assets/css/jquery-ui.css">
     <link rel="stylesheet" href="{{theme.link}}/assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="{{theme.link}}/assets/css/owl.theme.default.min.css">
-
     <link rel="stylesheet" href="{{theme.link}}/assets/css/bootstrap-datepicker.css">
-
     <link rel="stylesheet" href="{{theme.link}}/assets/fonts/flaticon/font/flaticon.css">
-
-
-
     <link rel="stylesheet" href="{{theme.link}}/assets/css/aos.css">
-
     <link rel="stylesheet" href="{{theme.link}}/assets/css/style.css">
-
     <link rel="stylesheet" href="{{theme.link}}/style.css">
+    <link rel="icon" type="image/png" href="{{ function('get_site_icon_url') }}" />
 
     <script src="{{theme.link}}/assets/js/jquery-3.3.1.min.js"></script>
 
@@ -72,7 +65,15 @@
           {% set sitelink = site.link %}
           {% endif %}
           <div class="col-11 col-xl-2 site-logo">
-            <h1 class="mb-0"><a href="{{ sitelink }}" class="text-white h2 mb-0">Logis</a></h1>
+            <h1 class="mb-0">
+              <a href="{{ site.link }}" class="text-white h2 mb-0">
+              {% if function('get_theme_mod', 'wptest_logo') %}
+                <img src="{{ function('get_theme_mod', 'wptest_logo') }}" alt="{{ function('get_option', 'blogname') }}" />
+              {% else %}
+                {{ function('get_option', 'blogname') }}                
+              {% endif %}
+              </a>
+            </h1>
           </div>
           <div class="col-12 col-md-10 d-none d-xl-block">
             <nav class="site-navigation position-relative text-right" role="navigation">

@@ -5,6 +5,13 @@ $timber = new Timber\Timber();
 include 'widgets/follow.php';
 include 'widgets/newsletter.php';
 
+add_theme_support( 'post-thumbnails' ); 
+
+/**
+ * Subscription handler
+ *
+ * @return void
+ */
 function wptest_subscription_handler() {
 	$email = $_POST['email_signup'];
 
@@ -22,6 +29,11 @@ function wptest_subscription_handler() {
 add_action( 'wp_ajax_nopriv_wptest_subscription',  'wptest_subscription_handler' );
 add_action( 'wp_ajax_wptest_subscription','wptest_subscription_handler' );
 
+/**
+ * Contact form handler
+ *
+ * @return void
+ */
 function wptest_contact_form_handler() {
 	$fname 		= $_POST['cf_fname'];
 	$lname 		= $_POST['cf_lname'];
@@ -39,8 +51,6 @@ function wptest_contact_form_handler() {
 }
 add_action( 'wp_ajax_nopriv_wptest_contact_form', 'wptest_contact_form_handler' );
 add_action( 'wp_ajax_wptest_contact_form','wptest_contact_form_handler' );
-
-add_theme_support( 'post-thumbnails' ); 
 
 /**
  * Create four sidebars at footer
@@ -71,27 +81,29 @@ add_action( 'widgets_init', 'wptest_widgets_init' );
  * @return void
  */
 function wptest_customize_register( $wp_customize ) {
-    $wp_customize->add_section(
-        'wptest_customize_options',
-        array(
-            'title'      => 'WP-Test Customization',
-            'priority'   => 30,
-        )
-    );
-    $wp_customize->add_setting(
-        'wptest_copyright',
-        array(
-            'default'   => 'Teste',
-        )
-    );
+	/** Copyright notice */
+    $wp_customize->add_setting( 'wptest_copyright', array( 'default' => 'Customize your copyright notice.') );
     $wp_customize->add_control(
         'wptest_copyright',
         array(
-            'label'     => __( 'Copyright notice', 'wp-test' ),
+            'label'     => 'Copyright notice',
             'type'      => 'text',
             'section'   => 'title_tagline',
         )
-    );
+	);
+	/** Logo */
+    $wp_customize->add_setting( 'wptest_logo', array( 'default' => '' ) );
+    $wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'logo',
+			array(
+				'label'      => 'Upload a logo',
+				'section'    => 'title_tagline',
+				'settings'   => 'wptest_logo',
+			)
+		)
+	);
 }
 add_action( 'customize_register', 'wptest_customize_register' );
 

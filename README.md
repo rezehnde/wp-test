@@ -7,7 +7,7 @@ WordPress Theme from scratch to show my abilities as WordPress Developer
 Four footer sidebars where users can add widgets
 
 ### Template appearance customization
-Inside _side identity section_ users can customize the copyright notice
+Inside _side identity section_ users can customize the copyright notice, logo and favicon.
 
 ### Contact form
 A contact form which sends email to the site administrator with fields validation
