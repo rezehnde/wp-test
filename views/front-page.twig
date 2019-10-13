@@ -1,4 +1,4 @@
-{% extends "templates/base.twig" %}
+{% extends "views/base.twig" %}
 
 {% block content %}
     <div class="site-blocks-cover overlay" style="background-image: url({{theme.link}}/assets/images/hero_bg_2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5" id="section-home">
@@ -100,11 +100,11 @@
       </div>
     </div>
 
-    {% include 'templates/people.twig' %}
+    {% include 'views/people.twig' %}
 
-    {% include 'templates/services.twig' %}
+    {% include 'views/services.twig' %}
     
-    {% include 'templates/industries.twig' %}
+    {% include 'views/industries.twig' %}
 
     <div class="site-blocks-cover overlay inner-page-cover" style="background-image: url({{theme.link}}/assets/images/hero_bg_2.jpg); background-attachment: fixed;">
       <div class="container">
@@ -119,9 +119,9 @@
       </div>
     </div>  
     
-    {% include 'templates/testimonials.twig' %}
+    {% include 'views/testimonials.twig' %}
 
-    {% include 'templates/latestposts.twig' %}
+    {% include 'views/latestposts.twig' %}
 
     <div class="site-section bg-light" id="section-contact">
       <div class="container">
