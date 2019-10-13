@@ -15,9 +15,9 @@ Inside _side identity section_ users can customize the copyright notice
 ## Custom post types
 Code generated with [Custom Post Type UI](https://wordpress.org/plugins/custom-post-type-ui/) plugin.
 
-**People** manages the company's team (field: position, facebook, twitter, linkedin and instagram).
-**Services** manages the company's services (field: icon).
-**Testimonials** manages the company's testimonials (field: testimonial).
-**Subscriptions** manages the website's subscriptions.
+- **People** manages the company's team (field: position, facebook, twitter, linkedin and instagram).
+- **Services** manages the company's services (field: icon).
+- **Testimonials** manages the company's testimonials (field: testimonial).
+- **Subscriptions** manages the website's subscriptions.
 
 :+1: Using [Timber](https://timber.github.io/docs/) in order to separate HTML code from PHP code.
