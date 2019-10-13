@@ -1,16 +1,16 @@
 # wp-test
-WordPress Theme from scratch to show my abilities as WordPress Developer
+WordPress Theme from scratch to show my abilities as WordPress Developer.
 
 ## Features
 
 ### Four footer columns
-Four footer sidebars where users can add widgets
+Four footer sidebars where users can add widgets.
 
 ### Template appearance customization
-Inside _side identity section_ users can customize the copyright notice, logo and favicon.
+Inside _site identity_ section users can customize the copyright notice, logo and favicon.
 
 ### Contact form
-A contact form which sends email to the site administrator with fields validation
+A contact form which sends email to the site administrator with fields validation.
 
 ### Widgets
 - **Follow:** where user can add four social networks and it will show those four social icons on the frontend
