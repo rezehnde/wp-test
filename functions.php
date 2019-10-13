@@ -22,6 +22,24 @@ function wptest_subscription_handler() {
 add_action( 'wp_ajax_nopriv_wptest_subscription',  'wptest_subscription_handler' );
 add_action( 'wp_ajax_wptest_subscription','wptest_subscription_handler' );
 
+function wptest_contact_form_handler() {
+	$fname 		= $_POST['cf_fname'];
+	$lname 		= $_POST['cf_lname'];
+	$email 		= $_POST['cf_email'];
+	$subject 	= $_POST['cf_subject'];
+	$message 	= $_POST['cf_message'];
+
+	$headers = array();
+	$headers[] = 'From: '.$fname.' '.$lname.' <'.$email.'>';
+	$headers[] = 'Content-Type: text/html; charset=UTF-8';
+
+	wp_mail( get_option('admin_email'), $subject, $message, $headers );
+
+	wp_die();
+}
+add_action( 'wp_ajax_nopriv_wptest_contact_form', 'wptest_contact_form_handler' );
+add_action( 'wp_ajax_wptest_contact_form','wptest_contact_form_handler' );
+
 add_theme_support( 'post-thumbnails' ); 
 
 /**

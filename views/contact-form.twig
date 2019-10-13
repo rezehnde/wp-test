@@ -1,0 +1,41 @@
+<form id="contact_form" method="post" class="p-5 bg-white">
+    <div class="row form-group">
+        <div class="col-md-6 mb-3 mb-md-0">
+            <label class="text-black" for="cf_fname">First Name</label>
+            <input type="text" id="cf_fname" class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label class="text-black" for="cf_lname">Last Name</label>
+            <input type="text" id="cf_lname" class="form-control">
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-12">
+            <label class="text-black" for="cf_email">Email</label> 
+            <input type="email" id="cf_email" class="form-control">
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-12">
+            <label class="text-black" for="cf_subject">Subject</label> 
+            <input type="subject" id="cf_subject" class="form-control">
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-12">
+            <label class="text-black" for="cf_message">Message</label> 
+            <textarea name="message" id="cf_message" cols="30" rows="5" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-12">
+            <div id="cf_alert" class="alert alert-warning" role="alert" style="display: none;"></div>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-12">
+            <input type="submit" value="Send Message" class="btn btn-primary py-2 px-4 text-white">
+        </div>
+    </div>
+</form>
+<script src="{{ theme.link }}/scripts/contact-form.js"></script>
