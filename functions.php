@@ -2,11 +2,33 @@
 require_once(__DIR__ . '/vendor/autoload.php');
 $timber = new Timber\Timber();
 
-add_theme_support( 'post-thumbnails' ); 
-
 include 'widgets/follow.php';
 include 'widgets/newsletter.php';
 
+function wptest_subscription_handler() {
+	$email = $_POST['email_signup'];
+
+	$subscription = get_page_by_title( $email, OBJECT, 'subscription' );
+	if (!isset($subscription)) {
+		$subscription = array(
+			'post_title'	=> $email,
+			'post_status'	=> 'publish',
+			'post_type'		=> 'subscription'
+		);
+		wp_insert_post( $subscription );
+	}
+	wp_die();
+}
+add_action( 'wp_ajax_nopriv_wptest_subscription',  'wptest_subscription_handler' );
+add_action( 'wp_ajax_wptest_subscription','wptest_subscription_handler' );
+
+add_theme_support( 'post-thumbnails' ); 
+
+/**
+ * Create four sidebars at footer
+ *
+ * @return void
+ */
 function wptest_widgets_init() {
 	for ($i=1; $i <= 4; $i++) { 
 		register_sidebar(
@@ -24,6 +46,12 @@ function wptest_widgets_init() {
 }
 add_action( 'widgets_init', 'wptest_widgets_init' );
 
+/**
+ * Adding customize options to theme customization inside Appearance menu
+ *
+ * @param WP_Customize_Manager $wp_customize
+ * @return void
+ */
 function wptest_customize_register( $wp_customize ) {
     $wp_customize->add_section(
         'wptest_customize_options',
@@ -68,6 +96,11 @@ function wptest_remote_get( $url, $shuffle = false )
     return $body;
 }
 
+/**
+ * Registering custom post types
+ *
+ * @return void
+ */
 function wptest_register_my_cpts() {
 
 	/**
