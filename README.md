@@ -10,7 +10,8 @@ Four footer sidebars where users can add widgets
 Inside _side identity section_ users can customize the copyright notice
 
 ### Widgets
-**Follow:** where user can add four social networks and it will show those four social icons on the frontend
+- **Follow:** where user can add four social networks and it will show those four social icons on the frontend
+- **Newsletter:** where visitors can add their emails to subscription custom post type on the website.
 
 ## Custom post types
 Code generated with [Custom Post Type UI](https://wordpress.org/plugins/custom-post-type-ui/) plugin.

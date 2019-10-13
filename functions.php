@@ -5,6 +5,7 @@ $timber = new Timber\Timber();
 add_theme_support( 'post-thumbnails' ); 
 
 include 'widgets/follow.php';
+include 'widgets/newsletter.php';
 
 function wptest_widgets_init() {
 	for ($i=1; $i <= 4; $i++) { 
