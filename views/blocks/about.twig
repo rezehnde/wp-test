@@ -1,0 +1,20 @@
+<div class="site-section" id="section-about">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-5 ml-auto mb-5 order-md-2" data-aos="fade-up" data-aos-delay="100">
+                <img src="{{ fields.image }}" alt="{{ fields.title }}" class="img-fluid rounded">
+            </div>
+            <div class="col-md-6 order-md-1" data-aos="fade-up">
+                <div class="text-left pb-1 border-primary mb-4">
+                    <h2 class="text-primary">{{ fields.title }}</h2>
+                </div>
+                <p>{{ fields.content }}</p>
+                <ul class="ul-check list-unstyled success">
+                {% for field in fields.list %}
+                    <li>{{ field.item }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
