@@ -30,8 +30,15 @@ function wptest_block_render_callback( $block, $content = '', $is_preview = fals
     $context['fields'] = get_fields();
 	$context['is_preview'] = $is_preview;
 	
-	if ( $slug == 'team' ) {
-		$context['people'] = Timber::get_posts( 'post_type=people&numberposts=3' );
+	switch ( $slug ) {
+		case 'team':
+			$context['people'] = Timber::get_posts( 'post_type=people&numberposts=3' );
+			break;
+		case 'services':
+			$context['services'] = Timber::get_posts( 'post_type=services&numberposts=6' );
+			break;
+		default:
+			break;
 	}
 
     Timber::render( 'views/blocks/'.$slug.'.twig', $context );	
@@ -74,6 +81,15 @@ function wptest_register_block() {
 			'category'			=> 'wptest',
 			'icon'				=> 'groups',
 			'keywords'			=> array( 'team' ),
+		));
+		acf_register_block(array(
+			'name'				=> 'services',
+			'title'				=> __('Services'),
+			'description'		=> __('A custom services block.'),
+			'render_callback'	=> 'wptest_block_render_callback',
+			'category'			=> 'wptest',
+			'icon'				=> 'star-empty',
+			'keywords'			=> array( 'service' ),
 		));
 	}
 }

@@ -3,7 +3,6 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $timber = new Timber\Timber();
 
 add_theme_support( 'post-thumbnails' ); 
-add_editor_style( 'style-editor.css' );
 
 include 'widgets/follow.php';
 include 'widgets/newsletter.php';
