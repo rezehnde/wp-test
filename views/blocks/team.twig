@@ -1,0 +1,27 @@
+<div class="site-section border-bottom" id="section-our-team">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center border-primary">
+                <h2 class="font-weight-light text-primary" data-aos="fade">{{ fields.title }}</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for person in people %}
+            <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
+                <div class="person">
+                    <img src="{{ person.thumbnail.src }}" alt="Image" class="img-fluid rounded mb-5 w-75 rounded-circle">
+                    <h3>{{ person.title }}</h3>
+                    <p class="position text-muted">{{ person.meta('position')}}</p>
+                    <p class="mb-4">{{ person.post_excerpt }}</p>
+                    <ul class="ul-social-circle">
+                        <li><a href="{{ person.meta('facebook') }}"><span class="icon-facebook"></span></a></li>
+                        <li><a href="{{ person.meta('twitter') }}"><span class="icon-twitter"></span></a></li>
+                        <li><a href="{{ person.meta('linkedin') }}"><span class="icon-linkedin"></span></a></li>
+                        <li><a href="{{ person.meta('instagram') }}"><span class="icon-instagram"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

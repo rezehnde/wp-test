@@ -18,7 +18,8 @@ function wptest_block_editor_style() {
 	wp_enqueue_style( 'jquery_style_block_css', get_template_directory_uri() . '/assets/css/jquery-ui.css' );
 	wp_enqueue_style( 'flaticon_style_block_css', get_template_directory_uri() . '/assets/fonts/flaticon/font/flaticon.css' );
     wp_enqueue_style( 'css_style_block_css', get_template_directory_uri() . '/assets/css/style.css' );
-    wp_enqueue_style( 'style_block_css', get_template_directory_uri() . '/style.css' );
+	wp_enqueue_style( 'style_block_css', get_template_directory_uri() . '/style.css' );
+	wp_enqueue_style( 'style_editor_block_css', get_template_directory_uri() . '/style-editor.css' );
 }
 add_action( 'enqueue_block_assets', 'wptest_block_editor_style' );
 
@@ -27,7 +28,12 @@ function wptest_block_render_callback( $block, $content = '', $is_preview = fals
 	$context = Timber::context();
     $context['block'] = $block;
     $context['fields'] = get_fields();
-    $context['is_preview'] = $is_preview;
+	$context['is_preview'] = $is_preview;
+	
+	if ( $slug == 'team' ) {
+		$context['people'] = Timber::get_posts( 'post_type=people&numberposts=3' );
+	}
+
     Timber::render( 'views/blocks/'.$slug.'.twig', $context );	
 }
 
@@ -59,6 +65,15 @@ function wptest_register_block() {
 			'category'			=> 'wptest',
 			'icon'				=> 'editor-ol-rtl',
 			'keywords'			=> array( 'steps' ),
+		));
+		acf_register_block(array(
+			'name'				=> 'team',
+			'title'				=> __('Team'),
+			'description'		=> __('A custom team block.'),
+			'render_callback'	=> 'wptest_block_render_callback',
+			'category'			=> 'wptest',
+			'icon'				=> 'groups',
+			'keywords'			=> array( 'team' ),
 		));
 	}
 }
