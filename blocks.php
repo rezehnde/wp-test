@@ -57,6 +57,7 @@ function wptest_register_block() {
 			array( 'name' => 'team', 'icon' => 'groups' ),
 			array( 'name' => 'services', 'icon' => 'star-empty' ),
 			array( 'name' => 'industries', 'icon' => 'chart-bar' ),
+			array( 'name' => 'vimeo', 'icon' => 'format-video' ),
 		);
 
 		foreach ($blocks as $block) {
