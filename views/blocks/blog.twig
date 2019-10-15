@@ -2,12 +2,12 @@
     <div class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-md-7 text-center border-primary">
-                <h2 class="font-weight-light text-primary">Our Blog</h2>
-                <p class="color-black-opacity-5">See Our Daily News &amp; Updates</p>
+                <h2 class="font-weight-light text-primary">{{ fields.title }}</h2>
+                <p class="color-black-opacity-5">{{ fields.subtitle }}</p>
             </div>
         </div>
         <div class="row mb-5 align-items-stretch">
-            {% for post in latestposts %}
+            {% for post in blog %}
             {% include 'views/post-archive.twig' %}
             {% endfor %}
         </div>

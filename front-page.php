@@ -1,7 +1,7 @@
 <?php
 $context = Timber::context();
 $context['post'] = new Timber\Post();
-$context['latestposts'] = Timber::get_posts( 'post_type=post&numberposts=3' );
+
 $context['is_front'] = is_front_page();
 $context['footer_1'] = Timber::get_widgets('footer_1');
 $context['footer_2'] = Timber::get_widgets('footer_2');

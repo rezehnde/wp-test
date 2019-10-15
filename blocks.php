@@ -46,6 +46,9 @@ function wptest_block_render_callback( $block, $content = '', $is_preview = fals
 		case 'testimonial':
 			$context['testimonials'] = Timber::get_posts( 'post_type=testimonials&numberposts=3' );
 			break;
+		case 'blog':
+			$context['blog'] = Timber::get_posts( 'post_type=post&numberposts=3' );
+			break;
 	}
 
     Timber::render( 'views/blocks/'.$slug.'.twig', $context );	
@@ -62,6 +65,7 @@ function wptest_register_block() {
 			array( 'name' => 'industries', 'icon' => 'chart-bar' ),
 			array( 'name' => 'vimeo', 'icon' => 'format-video' ),
 			array( 'name' => 'testimonial', 'icon' => 'editor-quote' ),
+			array( 'name' => 'blog', 'icon' => 'edit' ),
 		);
 
 		foreach ($blocks as $block) {
