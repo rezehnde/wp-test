@@ -31,7 +31,7 @@ function wptest_block_render_callback( $block, $content = '', $is_preview = fals
     Timber::render( 'views/blocks/'.$slug.'.twig', $context );	
 }
 
-function about_block_init() {
+function wptest_register_block() {
 	if( function_exists('acf_register_block') ) {
 		acf_register_block(array(
 			'name'				=> 'about',
@@ -42,6 +42,15 @@ function about_block_init() {
 			'icon'				=> 'admin-comments',
 			'keywords'			=> array( 'about' ),
 		));
+		acf_register_block(array(
+			'name'				=> 'hero',
+			'title'				=> __('Hero'),
+			'description'		=> __('A custom hero block.'),
+			'render_callback'	=> 'wptest_block_render_callback',
+			'category'			=> 'wptest',
+			'icon'				=> 'slides',
+			'keywords'			=> array( 'hero' ),
+		));
 	}
 }
-add_action('acf/init', 'about_block_init');
+add_action('acf/init', 'wptest_register_block');
