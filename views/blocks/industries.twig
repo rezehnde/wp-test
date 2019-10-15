@@ -7,6 +7,7 @@
             </div>
         </div>
     </div>
+    {% if not is_preview %}
     <div class="owl-carousel nonloop-block-13">
         {% for industry in industries|slice(0,5) %}
         <div>
@@ -19,4 +20,7 @@
         </div>
         {% endfor %}
     </div>
+    {% else %}
+    <div class="text-center"><code>A carousel with an industries list will appear here in front-end.</code></div>
+    {% endif %}
 </div>

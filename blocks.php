@@ -15,10 +15,7 @@ add_filter( 'block_categories', 'wptest_block_category', 10, 2);
 function wptest_block_editor_style() {
     wp_enqueue_style( 'icomoon_style_block_css', get_template_directory_uri() . '/assets/fonts/icomoon/style.css' );
 	wp_enqueue_style( 'bootstrap_style_block_css', get_template_directory_uri() . '/assets/css/bootstrap.min.css' );
-	wp_enqueue_style( 'magnific_popup_style_block_css', get_template_directory_uri() . '/assets/css/magnific-popup.css' );
 	wp_enqueue_style( 'jquery_style_block_css', get_template_directory_uri() . '/assets/css/jquery-ui.css' );
-	wp_enqueue_style( 'owl_carousel_style_block_css', get_template_directory_uri() . '/assets/css/owl.carousel.min.css' );
-	wp_enqueue_style( 'owl_theme_style_block_css', get_template_directory_uri() . '/assets/css/owl.theme.default.min.css' );
 	wp_enqueue_style( 'flaticon_style_block_css', get_template_directory_uri() . '/assets/fonts/flaticon/font/flaticon.css' );
 	wp_enqueue_style( 'css_style_block_css', get_template_directory_uri() . '/assets/css/style.css' );
 	wp_enqueue_style( 'style_block_css', get_template_directory_uri() . '/style.css' );
@@ -66,6 +63,7 @@ function wptest_register_block() {
 			array( 'name' => 'vimeo', 'icon' => 'format-video' ),
 			array( 'name' => 'testimonial', 'icon' => 'editor-quote' ),
 			array( 'name' => 'blog', 'icon' => 'edit' ),
+			array( 'name' => 'contact', 'icon' => 'email-alt' ),
 		);
 
 		foreach ($blocks as $block) {

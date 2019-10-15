@@ -5,7 +5,7 @@
                 <h2 class="font-weight-light text-primary">{{ fields.title }}</h2>
             </div>
         </div>
-
+        {% if not is_preview %}
         <div class="slide-one-item home-slider owl-carousel">
             {% for testimonial in testimonials %}
             <div>
@@ -21,5 +21,8 @@
             </div>
             {% endfor %}
         </div>
+        {% else %}
+        <div class="text-center"><code>A carousel with an testimonals list will appear here in front-end.</code></div>
+        {% endif %}
     </div>
 </div>

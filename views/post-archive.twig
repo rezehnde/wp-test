@@ -2,7 +2,9 @@
     <div class="h-entry">
         <img src="{{ post.thumbnail.src }}" alt="{{ post.title }}" class="img-fluid">
         <h2 class="font-size-regular"><a href="{{ post.link }}">{{ post.title }}</a></h2>
+        {% if function('get_post_type') == 'post' %}
         <div class="meta mb-4">by {{ post.author.name }} <span class="mx-2">&bullet;</span> {{ post.date('F d, Y') }} <span class="mx-2">&bullet;</span> {{ post.terms('category')|join(', ') }}</div>
+        {% endif %}
         <p>{{ post.post_content|excerpt(20) }}</p>
     </div> 
 </div>

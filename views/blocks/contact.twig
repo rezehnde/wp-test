@@ -1,0 +1,38 @@
+<div class="site-section bg-light" id="section-contact">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center border-primary">
+                <h2 class="font-weight-light text-primary">{{ fields.title }}</h2>
+                <p class="color-black-opacity-5">{{ fields.subtitle }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7 mb-5">
+
+                {% include 'views/contact-form.twig' %}
+
+            </div>
+            <div class="col-md-5">
+
+                <div class="p-4 mb-3 bg-white">
+                    <p class="mb-0 font-weight-bold">Address</p>
+                    <p class="mb-4">{{ fields.address }}</p>
+
+                    <p class="mb-0 font-weight-bold">Phone</p>
+                    <p class="mb-4"><a href="#">{{ fields.phone }}</a></p>
+
+                    <p class="mb-0 font-weight-bold">Email Address</p>
+                    <p class="mb-0"><a href="#">{{ fields.email }}</a></p>
+                </div>
+
+                <div class="p-4 mb-3 bg-white">
+                    <h3 class="h5 text-black mb-3">More Info</h3>
+                    <p>{{ fields.more_info }}</p>
+                    <p><a href="{{ fields.more_info_button_url }}" class="btn btn-primary px-4 py-2 text-white">{{ fields.more_info_button_label}}</a></p>
+                </div>
+
+            </div>
+       
+        </div>
+    </div>
+</div>
