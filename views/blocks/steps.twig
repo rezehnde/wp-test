@@ -1,0 +1,27 @@
+<div class="site-section bg-image overlay" style="background-image: url('{{ fields.background_image }}');" id="section-how-it-works">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center border-primary">
+                <h2 class="font-weight-light text-primary" data-aos="fade">{{ fields.title }}</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for field in fields.steps %}
+            <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
+                <div class="how-it-work-item">
+                    <span class="number">{{ loop.index }}</span>
+                    <div class="how-it-work-body">
+                        <h2>{{ field.title }}</h2>
+                        <p class="mb-5">{{ field.content }}</p>
+                        <ul class="ul-check list-unstyled success">
+                            {% for subfield in field.list %}                                                    
+                            <li class="text-white">{{ subfield.item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

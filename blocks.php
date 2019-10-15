@@ -34,6 +34,15 @@ function wptest_block_render_callback( $block, $content = '', $is_preview = fals
 function wptest_register_block() {
 	if( function_exists('acf_register_block') ) {
 		acf_register_block(array(
+			'name'				=> 'hero',
+			'title'				=> __('Hero'),
+			'description'		=> __('A custom hero block.'),
+			'render_callback'	=> 'wptest_block_render_callback',
+			'category'			=> 'wptest',
+			'icon'				=> 'slides',
+			'keywords'			=> array( 'hero' ),
+		));
+		acf_register_block(array(
 			'name'				=> 'about',
 			'title'				=> __('About Us'),
 			'description'		=> __('A custom about us block.'),
@@ -43,13 +52,13 @@ function wptest_register_block() {
 			'keywords'			=> array( 'about' ),
 		));
 		acf_register_block(array(
-			'name'				=> 'hero',
-			'title'				=> __('Hero'),
-			'description'		=> __('A custom hero block.'),
+			'name'				=> 'steps',
+			'title'				=> __('Steps'),
+			'description'		=> __('A custom three steps block.'),
 			'render_callback'	=> 'wptest_block_render_callback',
 			'category'			=> 'wptest',
-			'icon'				=> 'slides',
-			'keywords'			=> array( 'hero' ),
+			'icon'				=> 'editor-ol-rtl',
+			'keywords'			=> array( 'steps' ),
 		));
 	}
 }
