@@ -43,6 +43,9 @@ function wptest_block_render_callback( $block, $content = '', $is_preview = fals
 		case 'industries':
 			$context['industries'] = wptest_remote_get( 'https://jsonplaceholder.typicode.com/photos', true );
 			break;
+		case 'testimonial':
+			$context['testimonials'] = Timber::get_posts( 'post_type=testimonials&numberposts=3' );
+			break;
 	}
 
     Timber::render( 'views/blocks/'.$slug.'.twig', $context );	
@@ -58,6 +61,7 @@ function wptest_register_block() {
 			array( 'name' => 'services', 'icon' => 'star-empty' ),
 			array( 'name' => 'industries', 'icon' => 'chart-bar' ),
 			array( 'name' => 'vimeo', 'icon' => 'format-video' ),
+			array( 'name' => 'testimonial', 'icon' => 'editor-quote' ),
 		);
 
 		foreach ($blocks as $block) {
