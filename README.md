@@ -24,4 +24,18 @@ Code generated with [Custom Post Type UI](https://wordpress.org/plugins/custom-p
 - **Testimonials** manages the company's testimonials (field: testimonial).
 - **Subscriptions** manages the website's subscriptions.
 
+## Gutenberg Blocks
+Using [Advanced Custom Fields PRO](https://www.advancedcustomfields.com/) plugin to create Gutenberg Blocks in minutes.
+
+- **About** show about company's information putting a photo on the side
+- **Blog** show the three last posts from blog
+- **Contact** show a contact form and other contact information
+- **Hero** show a hero image with an healine and a button
+- **Industries** show images with the company's industries
+- **Services** show the company services side by side
+- **Steps** show a three steps presentation
+- **Team** show the team of the company
+- **Testimonials** show a carousel with testimonials
+- **Vimeo** show a video with an image background
+
 :+1: Using [Timber](https://timber.github.io/docs/) in order to separate HTML code from PHP code.
