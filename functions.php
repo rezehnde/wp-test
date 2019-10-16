@@ -42,11 +42,14 @@ function wptest_contact_form_handler() {
 	$subject 	= $_POST['cf_subject'];
 	$message 	= $_POST['cf_message'];
 
-	$headers = array();
-	$headers[] = 'From: '.$fname.' '.$lname.' <'.$email.'>';
-	$headers[] = 'Content-Type: text/html; charset=UTF-8';
-
-	wp_mail( get_option('admin_email'), $subject, $message, $headers );
+	$headers = array('Content-Type: text/html; charset=UTF-8');
+	$headers[] = 'Reply-To: '.$fname.' '.$lname.' <'.$email.'>';
+	wp_mail( 
+		get_option('admin_email'),
+		'['.get_bloginfo('name').'] '.$subject,
+		$message.'<br/>---<br/>'.$fname.' '.$lname.'<br/>'.$email,
+		$headers
+	);
 
 	wp_die();
 }
