@@ -135,11 +135,14 @@ function wptest_contact_form_handler() {
 	$email 		= $_POST['cf_email'];
 	$subject 	= $_POST['cf_subject'];
 	$message 	= $_POST['cf_message'];
+	$email_to 	= $_POST['cf_email_to'];
+
+	if (empty($email_to)) $email_to = get_option('admin_email');
 
 	$headers = array('Content-Type: text/html; charset=UTF-8');
 	$headers[] = 'Reply-To: '.$fname.' '.$lname.' <'.$email.'>';
 	wp_mail( 
-		get_option('admin_email'),
+		$email_to,
 		'['.get_bloginfo('name').'] '.$subject,
 		$message.'<br/>---<br/>'.$fname.' '.$lname.'<br/>'.$email,
 		$headers

@@ -7,6 +7,7 @@ $(document).ready(function($) {
         var cf_email = $("#cf_email").val();
         var cf_subject = $("#cf_subject").val();
         var cf_message = $("#cf_message").val();
+        var cf_email_to = $("#cf_email_to").val();
 
         $("#cf_fname").css("border-color", "#ced4da");
         $("#cf_lname").css("border-color", "#ced4da");
@@ -46,7 +47,8 @@ $(document).ready(function($) {
                     cf_lname: cf_lname,
                     cf_email: cf_email,
                     cf_subject: cf_subject,
-                    cf_message: cf_message
+                    cf_message: cf_message,
+                    cf_email_to: cf_email_to
                 },
                 success: function(data) {
                     $("#cf_fname").val("");
