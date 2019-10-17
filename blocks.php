@@ -1,4 +1,11 @@
 <?php
+/**
+ * Adding a new blocks category for Gutenberg Editor
+ *
+ * @param $categories
+ * @param $post
+ * @return void
+ */
 function wptest_block_category( $categories, $post ) {
 	return array_merge(
 		$categories,
@@ -12,6 +19,11 @@ function wptest_block_category( $categories, $post ) {
 }
 add_filter( 'block_categories', 'wptest_block_category', 10, 2);
 
+/**
+ * Enqueuing some CSS to Gutenberg Editor
+ *
+ * @return void
+ */
 function wptest_block_editor_style() {
     wp_enqueue_style( 'icomoon_style_block_css', get_template_directory_uri() . '/assets/fonts/icomoon/style.css' );
 	wp_enqueue_style( 'bootstrap_style_block_css', get_template_directory_uri() . '/assets/css/bootstrap.min.css' );
@@ -23,13 +35,20 @@ function wptest_block_editor_style() {
 }
 add_action( 'enqueue_block_assets', 'wptest_block_editor_style' );
 
+/**
+ * Rendering the Gutenberg Blocks
+ *
+ * @param $block
+ * @param $content
+ * @param $is_preview
+ * @return void
+ */
 function wptest_block_render_callback( $block, $content = '', $is_preview = false ) {
 	$slug = str_replace('acf/', '', $block['name']);
 	$context = Timber::context();
     $context['block'] = $block;
     $context['fields'] = get_fields();
 	$context['is_preview'] = $is_preview;
-	
 	switch ( $slug ) {
 		case 'team':
 			$context['people'] = Timber::get_posts( 'post_type=people&numberposts=3' );
@@ -47,10 +66,14 @@ function wptest_block_render_callback( $block, $content = '', $is_preview = fals
 			$context['blog'] = Timber::get_posts( 'post_type=post&numberposts=3' );
 			break;
 	}
-
     Timber::render( 'views/blocks/'.$slug.'.twig', $context );	
 }
 
+/**
+ * Registering the Gutenberg Blocks
+ *
+ * @return void
+ */
 function wptest_register_block() {
 	if( function_exists('acf_register_block') ) {
 		$blocks = array(

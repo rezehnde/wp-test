@@ -2,14 +2,71 @@
 require_once(__DIR__ . '/vendor/autoload.php');
 $timber = new Timber\Timber();
 
-add_theme_support( 'post-thumbnails' ); 
+add_theme_support( 'post-thumbnails' );
+add_filter('show_admin_bar', '__return_false');
 
+function wptest_enqueue_scripts() {
+	// Loading styles...
+	wp_enqueue_style( 'poppins', 'https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700' );
+	$styles = array(
+		'/assets/fonts/icomoon/style.css',
+		'/assets/css/bootstrap.min.css',
+		'/assets/css/magnific-popup.css',
+		'/assets/css/jquery-ui.css',
+		'/assets/css/owl.carousel.min.css',
+		'/assets/css/owl.theme.default.min.css',
+		'/assets/css/bootstrap-datepicker.css',
+		'/assets/fonts/flaticon/font/flaticon.css',
+		'/assets/css/aos.css',
+		'/assets/css/style.css',
+		'/style.css',
+	);
+
+	foreach ($styles as $style) {
+		$style_name = str_replace('css', '', str_replace( "/assets/", '', $style));
+		$style_name = sanitize_title($style_name);
+		wp_enqueue_style( $style_name, get_template_directory_uri() . $style );
+	}
+
+	// Loading scripts...
+	wp_enqueue_script( 'jquery-3.3.1', get_template_directory_uri() . '/assets/js/jquery-3.3.1.min.js', array(), false, false );
+	$scripts = array(
+		'jquery-migrate-3.0.1.min.js',
+		'jquery-ui.js',
+		'jquery.easing.1.3.js',
+		'popper.min.js',
+		'bootstrap.min.js',
+		'owl.carousel.min.js',
+		'jquery.stellar.min.js',
+		'jquery.countdown.min.js',
+		'jquery.magnific-popup.min.js',
+		'bootstrap-datepicker.min.js',
+		'aos.js',
+		'main.js',
+	);
+	foreach ($scripts as $script) {
+		wp_enqueue_script( str_replace('.min', '', str_replace('.js', '', $script)), get_template_directory_uri() . '/assets/js/'.$script, array('jquery-3.3.1'), false, true );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'wptest_enqueue_scripts' );
+
+/**
+ * Registering menu
+ *
+ * @return void
+ */
 function wptest_register_menu() {
   register_nav_menu('header-menu',__( 'Header Menu' ));
 }
 add_action( 'init', 'wptest_register_menu' );
 
-function add_to_context( $context ) {
+/**
+ * Adding menu to Timber context
+ *
+ * @param $context
+ * @return void
+ */
+function wptest_add_to_context( $context ) {
 	$menu = new Timber\Menu( 'header-menu' );
 	$context['menu'] = $menu;
 	for ($i=1; $i <= 4; $i++) { 
@@ -17,10 +74,15 @@ function add_to_context( $context ) {
 	}
     return $context;
 }
-add_filter( 'timber/context', 'add_to_context' );
+add_filter( 'timber/context', 'wptest_add_to_context' );
 
+/**
+ * Transforming menu urls to support hashtags while browser internal pages
+ *
+ * @param $twig
+ * @return void
+ */
 function wptest_add_to_twig( $twig ) {
-   
     $twig->addFilter(
 		new Timber\Twig_Filter( 'slugify', function( $url ) {
 			if (!is_front_page() && $url != get_bloginfo('home').'/') {
@@ -29,11 +91,13 @@ function wptest_add_to_twig( $twig ) {
 			return $url;
 		})
 	);
-    
     return $twig;
 }
 add_filter( 'timber/twig', 'wptest_add_to_twig' );
 
+/**
+ * Including Widgets and Gutenberg Blocks
+ */
 include 'widgets/follow.php';
 include 'widgets/newsletter.php';
 include 'blocks.php';
@@ -87,7 +151,7 @@ add_action( 'wp_ajax_nopriv_wptest_contact_form', 'wptest_contact_form_handler' 
 add_action( 'wp_ajax_wptest_contact_form','wptest_contact_form_handler' );
 
 /**
- * Create four sidebars at footer
+ * Creating four sidebars at footer
  *
  * @return void
  */
@@ -141,12 +205,12 @@ function wptest_customize_register( $wp_customize ) {
 }
 add_action( 'customize_register', 'wptest_customize_register' );
 
-/*
+/**
  * Retrieve an array response from the HTTP request using the GET method.
  *
- * @param STRING  $url
- * @param boolean $shuffle  Returns and random array
- * @return ARRAY
+ * @param string $url
+ * @param boolean $shuffle
+ * @return void
  */
 function wptest_remote_get( $url, $shuffle = false )
 {
