@@ -4,6 +4,36 @@ $timber = new Timber\Timber();
 
 add_theme_support( 'post-thumbnails' ); 
 
+function wptest_register_menu() {
+  register_nav_menu('header-menu',__( 'Header Menu' ));
+}
+add_action( 'init', 'wptest_register_menu' );
+
+function add_to_context( $context ) {
+	$menu = new Timber\Menu( 'header-menu' );
+	$context['menu'] = $menu;
+	for ($i=1; $i <= 4; $i++) { 
+		$context["footer_$i"] = Timber::get_widgets("footer_$i");
+	}
+    return $context;
+}
+add_filter( 'timber/context', 'add_to_context' );
+
+function wptest_add_to_twig( $twig ) {
+   
+    $twig->addFilter(
+		new Timber\Twig_Filter( 'slugify', function( $url ) {
+			if (!is_front_page() && $url != get_bloginfo('home').'/') {
+				$url = get_bloginfo('home').'/'.$url;
+			}
+			return $url;
+		})
+	);
+    
+    return $twig;
+}
+add_filter( 'timber/twig', 'wptest_add_to_twig' );
+
 include 'widgets/follow.php';
 include 'widgets/newsletter.php';
 include 'blocks.php';
