@@ -189,7 +189,7 @@ function wptest_customize_register( $wp_customize ) {
             'section'   => 'title_tagline',
         )
 	);
-	/** Logo */
+	/* Logo */
     $wp_customize->add_setting( 'wptest_logo', array( 'default' => '' ) );
     $wp_customize->add_control(
 		new WP_Customize_Image_Control(
@@ -199,6 +199,19 @@ function wptest_customize_register( $wp_customize ) {
 				'label'      => 'Upload a logo',
 				'section'    => 'title_tagline',
 				'settings'   => 'wptest_logo',
+			)
+		)
+	);
+	/* Logo Fixed Header */
+    $wp_customize->add_setting( 'wptest_logo_alt', array( 'default' => '' ) );
+    $wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'logo_alt',
+			array(
+				'label'      => 'Upload an alternate logo',
+				'section'    => 'title_tagline',
+				'settings'   => 'wptest_logo_alt',
 			)
 		)
 	);

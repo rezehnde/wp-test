@@ -37,7 +37,8 @@
                     <h1 class="mb-0">
                         <a href="{{ site.link }}" class="text-white h2 mb-0">
                         {% if function('get_theme_mod', 'wptest_logo') %}
-                            <img src="{{ function('get_theme_mod', 'wptest_logo') }}" alt="{{ function('get_option', 'blogname') }}" />
+                            <img id="logo" src="{{ function('get_theme_mod', 'wptest_logo') }}" alt="{{ function('get_option', 'blogname') }}" />
+                            <img id="logo_alt" src="{{ function('get_theme_mod', 'wptest_logo_alt') }}" alt="{{ function('get_option', 'blogname') }}" />                            
                         {% else %}
                             {{ function('get_option', 'blogname') }}                
                         {% endif %}

@@ -14,3 +14,12 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 .list-unstyled {
     list-style: none !important;
 }
+#logo_alt {
+    display: none;
+}
+header.scrolled.awake #logo {
+    display: none;
+}
+header.scrolled.awake #logo_alt {
+    display: inline;
+}
