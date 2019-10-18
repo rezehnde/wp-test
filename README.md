@@ -1,6 +1,8 @@
 # wp-test
 WordPress Theme from scratch to show my abilities as WordPress Developer.
 
+[Site Preview](https://rezehnde.com/logis/)
+
 ## Features
 
 ### Four footer columns
