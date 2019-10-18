@@ -1,0 +1,5 @@
+---
+deployment:
+    tasks:
+        - export DEPLOYPATH=/home/rezeskwk/public_html/logis/wp-content/themes/wp-test
+        - /bin/cp -r * $DEPLOYPATH
