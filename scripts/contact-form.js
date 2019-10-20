@@ -43,12 +43,12 @@ $(document).ready(function($) {
                 url: ajaxurl + "?action=wptest_contact_form",
                 type: "POST",
                 data: {
-                    cf_fname: cf_fname,
-                    cf_lname: cf_lname,
-                    cf_email: cf_email,
-                    cf_subject: cf_subject,
-                    cf_message: cf_message,
-                    cf_email_to: cf_email_to
+                    cf_fname,
+                    cf_lname,
+                    cf_email,
+                    cf_subject,
+                    cf_message,
+                    cf_email_to
                 },
                 success: function(data) {
                     $("#cf_fname").val("");

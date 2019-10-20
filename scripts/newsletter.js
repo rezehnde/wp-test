@@ -1,15 +1,15 @@
-$(document).ready(function($) {
-    $("#subscription_form").submit(function(event) {
-        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        var email_signup = $("#email_signup").val();
+$(document).ready((data) => {
+    $("#subscription_form").submit((data) => {
+        const regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        const email_signup = $("#email_signup").val();
         if (regex.test(email_signup)) {
             $.ajax({
                 url: ajaxurl + "?action=wptest_subscription",
                 type: "POST",
                 data: {
-                    email_signup: email_signup
+                    email_signup
                 },
-                success: function(data) {
+                success: (data) => {
                     $("#email_signup").val("");
                     $("#subscription_alert")
                         .text("Welcome to our list!")
