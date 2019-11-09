@@ -1,4 +1,4 @@
-# wp-test
+# wp-zehn
 WordPress Theme from scratch to show my abilities as WordPress Developer.
 
 :point_right: [Site Preview](https://rezehnde.com/logis/)
